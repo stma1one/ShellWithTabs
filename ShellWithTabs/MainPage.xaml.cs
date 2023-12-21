@@ -4,17 +4,14 @@ namespace ShellWithTabs;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	
 
-	public MainPage(HomePageViewModel vm)
+	public MainPage(MainPageViewModel vm)
 	{
 		this.BindingContext = vm;
 		InitializeComponent();
 	}
 
-	private async void OnCounterClicked(object sender, EventArgs e)
-	{
-	    
-	}
+	
 }
 

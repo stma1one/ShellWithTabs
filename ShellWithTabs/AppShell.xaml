@@ -5,24 +5,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ShellWithTabs"
     Shell.FlyoutBehavior="Disabled">
+    <!--
+        the first page is the login Page
+        all other pages are with tabs
+        *DONT FORGET TO ADD ALL THE PAGES AND VIEWMODELS TO THE MAUI BUILDER in MAUIPROGRAM.CS*
+        *CHECK HOMEPAGE.XAML.CS FOR CODE*
+        *CHECK HOMEPAGEVIEWMODELS FOR CODE*
+    -->
     <TabBar>
-        <ShellContent Shell.TabBarIsVisible="False"
-        Title="לוגין"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-    
-        <Tab Title="טאב מסך כניסה">
-            <ShellContent x:Name="home"
-                Title="הוםפייג" 
-                ContentTemplate="{DataTemplate local:HomePage}">                
-            </ShellContent>
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+
+        <Tab Title="דף הבית">
             <ShellContent
-                Title="מסך אחר" 
-                ContentTemplate="{DataTemplate local:AnotherPage}">
-            </ShellContent>
+                x:Name="home"
+                Title="הוםפייג"
+                ContentTemplate="{DataTemplate local:HomePage}"
+                Route="HomePage" />
         </Tab>
-       
-        
+
+        <Tab Title="מסך אחר">
+            <ShellContent
+                Title="מסך אחר"
+                ContentTemplate="{DataTemplate local:AnotherPage}"
+                Route="AnotherPage" />
+        </Tab>
+
     </TabBar>
 
 </Shell>

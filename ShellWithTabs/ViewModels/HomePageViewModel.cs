@@ -9,25 +9,57 @@ using System.Windows.Input;
 
 namespace ShellWithTabs.ViewModels
 {
-    public class HomePageViewModel:INotifyPropertyChanged
+    public class MainPageViewModel:INotifyPropertyChanged
     {
-        private bool TabisVisible;
-        private bool pageIsVisible;
-        public bool IsVisible { get => TabisVisible; set { TabisVisible = value; OnPropertyChanged(); OnPropertyChanged(nameof(PageIsVisible));  } }
-        public bool PageIsVisible { get => !TabisVisible;  }
+        #region Fields
+        private bool tabisVisible;//הסתרת הטאב הנוכחי
+        #endregion
 
-        public ICommand ClickCommand { get; protected set; }
-        public HomePageViewModel() { IsVisible = false;
-            ClickCommand = new Command(async () => { Shell.Current.DisplayAlert("hi", "hi", "hi"); IsVisible = true; await Shell.Current.GoToAsync(".."); });
+        #region Properties
+        public bool IsVisible
+        {
+          get => tabisVisible;
+          set { if (tabisVisible != value) 
+                {
+                    tabisVisible = value; OnPropertyChanged();
+                }
+            }
         }
+        #endregion
 
-       
+        #region Commands
+        public ICommand ClickCommand { get; protected set; }
+        #endregion
 
+        #region Constructor
+        public MainPageViewModel()
+        {
+            #region Display Tab By Default
+            IsVisible = true;//ברירת המחדל מוצג
+            #endregion
+            
+            //כאשר לוחצים על הכפתור
+            ClickCommand = new Command(
+                                        () =>
+                                        {
+                                            #region Hide Tab
+                                            IsVisible = false;//הטאב יוסתר
+                                            #endregion
+
+                                            #region Return to Shell Main Tab without the current Tab
+                                            Shell.Current.GoToAsync("..");//החזרה לדף הבית
+                                            #endregion
+                                        });
+        }
+        #endregion
+
+        #region INOTIFYPROPERTYCHANGE EVENT
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
     }
 }
