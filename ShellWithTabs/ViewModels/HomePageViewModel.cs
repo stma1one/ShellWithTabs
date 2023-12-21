@@ -9,6 +9,7 @@ using System.Windows.Input;
 
 namespace ShellWithTabs.ViewModels
 {
+    
     public class MainPageViewModel:INotifyPropertyChanged
     {
         #region Fields

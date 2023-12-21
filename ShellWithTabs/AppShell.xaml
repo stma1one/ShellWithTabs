@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:ShellWithTabs"
     Shell.FlyoutBehavior="Disabled">
     <!--
-        the first page is the login Page
-        all other pages are with tabs
+        the first page is the login Page (in this solution it's called MainPage)
+        all other pages are within a tab
         *DONT FORGET TO ADD ALL THE PAGES AND VIEWMODELS TO THE MAUI BUILDER in MAUIPROGRAM.CS*
         *CHECK HOMEPAGE.XAML.CS FOR CODE*
         *CHECK HOMEPAGEVIEWMODELS FOR CODE*
