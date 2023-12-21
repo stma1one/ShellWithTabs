@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ShellWithTabs.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ShellWithTabs"
+    Shell.FlyoutBehavior="Disabled">
+    <TabBar>
+        <ShellContent Shell.TabBarIsVisible="False"
+        Title="לוגין"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    
+        <Tab Title="טאב מסך כניסה">
+            <ShellContent x:Name="home"
+                Title="הוםפייג" 
+                ContentTemplate="{DataTemplate local:HomePage}">                
+            </ShellContent>
+            <ShellContent
+                Title="מסך אחר" 
+                ContentTemplate="{DataTemplate local:AnotherPage}">
+            </ShellContent>
+        </Tab>
+       
+        
+    </TabBar>
+
+</Shell>
